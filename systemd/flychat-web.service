@@ -1,0 +1,13 @@
+[Unit]
+Description=FlyChat web server (unified chat + 3D viewer)
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/flychat
+Environment=KMP_AFFINITY=disabled
+ExecStart=/opt/flychat/env/bin/python server.py 4116
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+checkpoints/llm/Qwen2.5-1.5B-Instruct/
+checkpoints/llm/final_v3/
+checkpoints/encoder.pt
+checkpoints/model_config.json
+data/processed/*
+!data/processed/.gitkeep
+web/data/meta.json.gz
+web/data/lod2/*
+!web/data/lod2/.gitkeep
+*.log
