@@ -17,7 +17,7 @@ git clone https://github.com/maokangkun/flychat && cd flychat
 # 1) 环境
 conda env create -f environment.yml && conda activate flychat
 
-# 2) 权重与数据(约 320MB 自 maokangkun/flychat-weights + 3GB Qwen 基座)
+# 2) 权重与数据(GitHub Release 约 325MB + Qwen 基座约 3GB, 镜像自动回退)
 ./scripts/download_weights.sh
 
 # 3) 启动(需要 CUDA GPU; 首次加载权重约 1 分钟)
@@ -53,7 +53,11 @@ checkpoints/  data/  web/data/   # 由下载脚本填充(不随 git 分发)
 路径全部相对仓库根解析，可用环境变量整体重定位：`FLYCHAT_ROOT`、
 `FLYCHAT_PROCESSED_DIR`、`FLYCHAT_VIEWER_META/JS/DATA`。
 
-## 权重内容（maokangkun/flychat-weights）
+## 权重内容（GitHub Release `weights-v1`）
+
+脚本自动从 [Release weights-v1](https://github.com/maokangkun/flychat/releases/tag/weights-v1)
+下载并还原目录布局（也可用 `scripts/upload_to_hf.py` 镜像到 HuggingFace 后改用
+`hf download`）。
 
 | 文件 | 说明 |
 | --- | --- |
