@@ -20,11 +20,13 @@ python3 - "$TMP" <<'PY'
 import os, shutil, sys
 tmp = sys.argv[1]
 for name in os.listdir(tmp):
-    if "__" not in name:
-        continue
-    rel = name.replace("__", "/")
-    dst = os.path.join(os.getcwd(), rel)
-    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    if "__" in name:
+        rel = name.replace("__", "/")
+        dst = os.path.join(os.getcwd(), rel)
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+    else:  # SHA256SUMS 等顶层资产直接落仓库根
+        rel = name
+        dst = os.path.join(os.getcwd(), name)
     shutil.move(os.path.join(tmp, name), dst)
     print(" ", rel)
 PY
